@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ラプトル戦術レポート</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Hiragino Sans', 'Yu Gothic UI', 'Meiryo', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 40px 30px;
+            position: relative;
+        }
+        
+        .header::before {
+            content: '🦖';
+            font-size: 3rem;
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            opacity: 0.3;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .intro {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .raptor-facts {
+            background: #e8f6f3;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #1abc9c;
+        }
+        
+        .raptor-facts ul {
+            margin-left: 20px;
+        }
+        
+        .raptor-facts li {
+            margin-bottom: 8px;
+        }
+        
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .principle-card {
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #e74c3c;
+            transition: transform 0.2s ease;
+        }
+        
+        .principle-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .company-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .company-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .company-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .company-table tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .checkmark {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #f39c12;
+            margin: 20px 0;
+        }
+        
+        .quote-section {
+            background: #f0f3ff;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 25px 0;
+        }
+        
+        .quote-section ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        
+        .quote-section li {
+            padding: 8px 0;
+            font-style: italic;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .quote-section li:before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+        
+        .conclusion {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .conclusion h2 {
+            color: white;
+            border-bottom: 3px solid #3498db;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .principles {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ラプトル戦術レポート</h1>
+            <div class="subtitle">〜小さくても選ばれる企業になるために〜</div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <strong>はじめに</strong><br>
+                本レポートでは、恐竜「ヴェロキラプトル」の生態や戦略をモチーフに、現代企業が"価格競争に巻き込まれず、価値で選ばれる"ためのヒントを整理する。特に中小企業やニッチ市場に挑む企業にとって、ラプトル型戦術は重要な指針となる。
+            </div>
+            
+            <div class="section">
+                <h2>🦖 1. ラプトルとは？</h2>
+                <div class="raptor-facts">
+                    <ul>
+                        <li><strong>時代</strong>：白亜紀後期（約7,500万〜7,000万年前）</li>
+                        <li><strong>体格</strong>：体長約2m、体高約0.5m、体重約15kg</li>
+                        <li><strong>特徴</strong>：
+                            <ul style="margin-top: 10px;">
+                                <li>鋭いカギ爪による攻撃力</li>
+                                <li>小型で俊敏</li>
+                                <li>賢く、環境への適応力が高い</li>
+                                <li>群れ行動の可能性（諸説あり）</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div style="margin-top: 15px; font-weight: bold; color: #1abc9c;">
+                        → ティラノのような巨体ではなく、<strong>柔軟さ・知恵・スピード</strong>で生き抜いた存在。
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>⚡ 2. ラプトル戦術とは何か？</h2>
+                <div class="principles">
+                    <div class="principle-card">
+                        <h3><span class="checkmark">✔︎</span> 大企業と正面から戦わない</h3>
+                        <p>規模・資本・ブランド力で勝てない土俵からあえて離れる</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3><span class="checkmark">✔︎</span> 独自のこだわりと価値で選ばれる</h3>
+                        <p>価格ではなく"理由ある品質"で顧客の信頼を得る</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3><span class="checkmark">✔︎</span> 小回り・柔軟性・誠実さ</h3>
+                        <p>顧客や環境の変化にすばやく対応<br>商品開発・販促・接客などあらゆる場面で「丁寧さ」を持つ</p>
+                    </div>
+                    <div class="principle-card">
+                        <h3><span class="checkmark">✔︎</span> "選ばれる"企業になる</h3>
+                        <p>安さで「買われる」のではなく、信頼で「選ばれる」存在に</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>💡 3. 誠実さは競争力になる</h2>
+                <h3>🤝 なぜ誠実さが選ばれる力になるのか？</h3>
+                <div class="highlight-box">
+                    <ul>
+                        <li>一貫した品質・サービスは信頼を育て、価格を超える価値をつくる</li>
+                        <li>誇張せず、偽らず、丁寧に作られたものは、生活者の心に残る</li>
+                        <li>「まじめにやっててよかった」と思える文化は、社員と顧客の両方に伝わる</li>
+                    </ul>
+                </div>
+                
+                <h3>🎯 誠実さを体現する行動例</h3>
+                <ul style="margin-left: 20px;">
+                    <li>商品情報を正確に伝える</li>
+                    <li>少量でも手を抜かない製造</li>
+                    <li>クレーム対応や問い合わせに真摯に向き合う</li>
+                    <li>原料・製法・パートナーに対する透明性</li>
+                </ul>
+                <div style="margin-top: 15px; font-weight: bold; color: #e74c3c;">
+                    → 小さな信頼の積み重ねが、"選ばれる理由"そのものになる。
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🏢 4. ラプトル戦術を体現する企業例</h2>
+                <table class="company-table">
+                    <thead>
+                        <tr>
+                            <th>企業・ブランド名</th>
+                            <th>ラプトル的要素</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>中川政七商店</strong></td>
+                            <td>伝統工芸の現代化、価値訴求、地方発信</td>
+                        </tr>
+                        <tr>
+                            <td><strong>久世福商店</strong></td>
+                            <td>素材と製法にこだわり、価格競争を避ける</td>
+                        </tr>
+                        <tr>
+                            <td><strong>スノーピーク</strong></td>
+                            <td>ブランド哲学と高品質で熱狂的なファン獲得</td>
+                        </tr>
+                        <tr>
+                            <td><strong>シャボン玉石けん</strong></td>
+                            <td>地味でも「正直な商品」で長年信頼されている</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="section">
+                <h2>📋 5. ラプトル戦術の4原則（整理）</h2>
+                <div style="margin: 25px 0;">
+                    <div style="margin-bottom: 20px;">
+                        <h3>1. 一本筋の通ったこだわりを持つ</h3>
+                        <p style="margin-left: 20px;">伝統や地域資源を活かし、「らしさ」を発揮</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3>2. "選ばれる理由"を言語化する</h3>
+                        <p style="margin-left: 20px;">なぜこの商品なのか？を説明できる力</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3>3. 誠実であることを大切にする</h3>
+                        <p style="margin-left: 20px;">「まじめにやっててよかった」と思える姿勢</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3>4. 小回りの利く組織・判断力</h3>
+                        <p style="margin-left: 20px;">少数精鋭・現場判断・即改善のスピード感</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>💬 6. 活用コピー例</h2>
+                <div class="quote-section">
+                    <ul>
+                        <li>"選ばれる理由"があるものを。</li>
+                        <li>あなたの"選ばれる理由"になりたい。</li>
+                        <li>まじめにやってて、よかった。</li>
+                        <li>信頼は、一朝一夕ではつくれない。</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="conclusion">
+                <h2>おわりに</h2>
+                <p>ラプトルのように、「小さくても、生き残る・選ばれる・信頼される」ための戦い方は、現代にも通じる。巨大な恐竜に勝つ必要はない。<strong>自分の価値を、自分の言葉と姿勢で、ちゃんと伝えること</strong>――それが、ラプトル戦術の本質である。</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
